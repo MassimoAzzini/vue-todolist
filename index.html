@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- VUE -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.runtime.global.min.js' integrity='sha512-pd/VddzIsL0FYk/YwjJAleZOOeZwKRMSKgy44n5AHCfh3ozMSRs1SRwhdv0qYRNMWooJ1rGuN+MpWBuL/PUXrw==' crossorigin='anonymous'></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   <!-- FONT-AWESOME -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==' crossorigin='anonymous'/>
@@ -25,10 +25,15 @@
     </div>
 
     <div class="new-task text-center">
-      <input type="text" placeholder="Nuova task" class="w-50 p-2">
+      <input
+        type="text"
+        placeholder="Nuova task"
+        class="w-50 p-2"
+        v-model.trim="newTask.title"
+        @keyup.enter="addTask">
 
 
-      <button class="p-2">Aggiungi</button>
+      <button @click="addTask" class="p-2">Aggiungi</button>
       <p class="error-input text-danger">Il nuovo task deve avere almeno 5 caratteri</p>
       <p class="error-delate text-danger">Attenzione!! Devi completare il task prima di eliminarlo!</p>
     </div>
