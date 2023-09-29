@@ -1,0 +1,42 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.error-input,
+.error-delate{
+  font-size: .9rem;
+}
+
+.new-task input,
+.new-task button {
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+.new-task input {
+  margin-right: 15px;
+}
+
+.tasks-container {
+  background-color: #F5F7F7;
+  border-radius: 10px;
+}
+
+.tasks-container li {
+  border-bottom: 1px solid lightgray;
+  padding: 0 15px;
+
+}
+
+.tasks-container li:hover {
+  background-color: white;
+}
+
+.tasks-container li i,
+.tasks-container li {
+  cursor: pointer;
+}
+
+.tasks-container li i:hover {
+  color:red
+}
