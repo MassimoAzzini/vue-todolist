@@ -30,30 +30,27 @@
         placeholder="Nuova task"
         class="w-50 p-2"
         v-model.trim="newTask.title"
-        @keyup.enter="addTask">
+        @keyup.enter="addTask()">
 
 
-      <button @click="addTask" class="p-2">Aggiungi</button>
-      <p class="error-input text-danger">Il nuovo task deve avere almeno 5 caratteri</p>
-      <p class="error-delate text-danger">Attenzione!! Devi completare il task prima di eliminarlo!</p>
+      <button @click="addTask()" class="p-2">Aggiungi</button>
+      <p v-if="isError" class="error-input text-danger">Il nuovo task deve avere almeno 5 caratteri</p>
+      <p v-if="message" class="error-delate text-danger">Attenzione!! Devi completare il task prima di eliminarlo!</p>
     </div>
 
     <div class="tasks-container p-4 mt-4">
-      <ul class="list-unstyled">
-        <li class="py-3">
-          <span>primo task</span>
-          <i class="fa-solid fa-trash float-end"></i>
-        </li>
-        <li class="py-3">
-          <span>primo task</span>
-          <i class="fa-solid fa-trash float-end"></i>
-        </li>
-        <li class="py-3">
-          <span>primo task</span>
-          <i class="fa-solid fa-trash float-end"></i>
+      <ul v-if="tasks.length > 0" class="list-unstyled">
+       <li
+          v-for="(task, index) in tasks"
+          class="py-3"
+          :class="{'done': task.isDone}"
+          @click="task.isDone = !task.isDone">
+
+          <span>{{task.title}}</span>
+          <i @click.stop="removeTask(index)" class="fa-solid fa-trash float-end"></i>
         </li>
       </ul>
-      <h3>Non ci sono task</h3>
+      <h3 v-else>Non ci sono task</h3>
 
     </div>
 
